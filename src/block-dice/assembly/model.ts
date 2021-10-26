@@ -101,9 +101,5 @@ export class GameReturnData {
   constructor(
     public data: Game[],
     public total: u32,
-    public length: u32,
-    public maxPage: u32,
-    public currentPage: u32,
-    public nextPage: u32
   ) {}
 }
