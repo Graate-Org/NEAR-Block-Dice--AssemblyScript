@@ -72,13 +72,13 @@ export function rollDice(gameId: GameID): Array<u32> {
       const game: Game = games[index];
       assert(game.canRollInGame(), "This game has ended!");
 
-      if ((game.status = GameStatus.Created)) {
+      if (game.status == GameStatus.Created) {
         game.status = GameStatus.Active;
         game.started = Context.blockTimestamp;
         game.ended = Context.blockTimestamp + 1800000;
+        games.replace(index, game);
       }
 
-      games.replace(index, game);
     }
   }
 
@@ -231,7 +231,7 @@ export function getPlayersDetails(gameId: GameID): Player[] {
  *
  * @returns Profile/user profile with array of games
  */
-export function getProfileDetails(account:AccountID): Profile {
+export function getProfileDetails(account: AccountID): Profile {
   const sender = account;
 
   if (profiles.contains(sender)) {
@@ -249,7 +249,7 @@ export function getProfileDetails(account:AccountID): Profile {
  */
 
 export function getActiveGames(): GameReturnData {
-  return getGameType( GameStatus.Active);
+  return getGameType(GameStatus.Active);
 }
 
 export function getCompletedGames(): GameReturnData {
@@ -345,7 +345,7 @@ function verifyGameId(gameId: GameID): void {
  *@function getCompletedGames
  *@function getCreatedGames
  */
-export function getGameType( type: GameStatus): GameReturnData {
+export function getGameType(type: GameStatus): GameReturnData {
   const gameType: Game[] = [];
 
   for (let index = 0; index < games.length; index++) {
@@ -355,8 +355,6 @@ export function getGameType( type: GameStatus): GameReturnData {
   }
 
   const total: u32 = gameType.length;
-
-
 
   const result = new GameReturnData(gameType, total);
 
