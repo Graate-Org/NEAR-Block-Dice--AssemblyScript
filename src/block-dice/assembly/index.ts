@@ -1,4 +1,4 @@
-import { context, Context, ContractPromiseBatch, logging, RNG, u128 } from "near-sdk-core";
+import { Context, ContractPromiseBatch, logging, RNG, u128 } from "near-sdk-core";
 import { AccountID, FEE, GameID, Profile } from "../utils";
 import { Game, GameStatus, Player, ClaimedWin, GameReturnData } from "./model";
 import { games, players, profiles } from "./storage";
@@ -10,7 +10,7 @@ import { games, players, profiles } from "./storage";
  * Needs minimun attached deposit to be 0.2 NEAR as fee
  */
 export function createNewGame(): GameID {
-  const sender = context.sender;
+  const sender = Context.sender;
   verifyGameFee(Context.attachedDeposit);
   const game = new Game();
   const gameId = game.id;
@@ -37,7 +37,7 @@ export function createNewGame(): GameID {
  */
 
 export function joinGame(gameId: GameID): string {
-  const sender = context.sender;
+  const sender = Context.sender;
   verifyGameId(gameId);
   verifyGameFee(Context.attachedDeposit);
   for (let index = 0; index < games.length; index++) {
@@ -53,7 +53,7 @@ export function joinGame(gameId: GameID): string {
     }
   }
 
-  return "You have joined game: " + gameId;
+  return `You have joined game:  + ${gameId}`;
 }
 
 /**
@@ -118,7 +118,7 @@ export function getWinners(gameId: GameID): Array<string> {
     if (games[index].id == gameId) {
       if (games[index].status !== GameStatus.Completed) {
         if (games[index].status !== GameStatus.Active) {
-          assert(games[index].ended >= context.blockTimestamp, "Game is active but not ended yet!");
+          assert(games[index].ended >= Context.blockTimestamp, "Game is active but not ended yet!");
         } else {
           assert(false, "Game is started but not completed");
         }
