@@ -1,6 +1,10 @@
-import { context, RNG, u128 } from "near-sdk-as";
-import { AccountID, FEE, GameID, Timestamp } from "../utils";
-import { players } from "./storage";
+import { context, RNG, u128, PersistentMap, PersistentVector } from "near-sdk-as";
+import { AccountID, FEE, GameID, Timestamp, Profile } from "../utils";
+
+export const profiles = new PersistentMap<AccountID, Profile>("profiles");
+export const games = new PersistentVector<Game>("games");
+export const players = new PersistentMap<GameID, Player[]>("players");
+
 
 export enum GameStatus {
   Created = 0,

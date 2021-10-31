@@ -2,7 +2,7 @@ import { VMContext } from "near-mock-vm";
 import { context, u128 } from "near-sdk-core";
 import { claimWinnings, createNewGame, getPlayersDetails, getWinners, joinGame, rollDice } from "../assembly";
 import { GameStatus, Player } from "../assembly/model";
-import { games, players, profiles } from "../assembly/storage";
+import { games, players, profiles } from "../assembly/model";
 import { FEE } from "../utils";
 
 const creator = "melvin.testnet";

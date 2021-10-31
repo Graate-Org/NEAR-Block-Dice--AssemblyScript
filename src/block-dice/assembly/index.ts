@@ -1,7 +1,6 @@
 import { Context, ContractPromiseBatch, logging, RNG, u128 } from "near-sdk-core";
 import { AccountID, FEE, GameID, Profile } from "../utils";
-import { Game, GameStatus, Player, ClaimedWin, GameReturnData } from "./model";
-import { games, players, profiles } from "./storage";
+import { Game, GameStatus, Player, ClaimedWin, GameReturnData, games, players, profiles } from "./model";
 
 /**
  *
@@ -53,7 +52,7 @@ export function joinGame(gameId: GameID): string {
     }
   }
 
-  return `You have joined game:  + ${gameId}`;
+  return "You have joined game: "  + gameId;
 }
 
 /**
