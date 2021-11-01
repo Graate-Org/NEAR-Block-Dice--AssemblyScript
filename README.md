@@ -9,9 +9,9 @@ For additional informtion on the smart contract methods view [here](src/block-di
 
 ```
 
-It's a simple contract demonstrating how to build a dic game on the NEAR blockchain using assembly script:
-- Why you should avoid leaks and have data restrictions on your smart contracts 
-- How to implement random number generation and id checks on the NEAR block chain
+It's a simple contract demonstrating how to build a dice game on the NEAR blockchain using AssemblyScript:
+- Why you should avoid leaks and have data restrictions on your smart contracts
+- How to implement random number generation and id checks on the NEAR blockchain
 
 
 ## Usage
@@ -25,9 +25,6 @@ It's a simple contract demonstrating how to build a dic game on the NEAR blockch
 ### Top-level `yarn` commands
 
 - run `yarn test` to run all tests
-  - (!) be sure to run `yarn build:release` at least once before:
-    - run `yarn test:unit` to run only unit tests
-    - run `yarn test:simulate` to run only simulation tests
 - run `yarn build` to quickly verify build status
 - run `yarn clean` to clean up build folder
 
