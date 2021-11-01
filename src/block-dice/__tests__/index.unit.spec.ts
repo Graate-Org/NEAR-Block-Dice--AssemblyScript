@@ -68,7 +68,7 @@ describe("Checks for joining a game", () => {
   it("can't when join when completed", () => {
     VMContext.setSigner_account_id(player2);
     const completedGame = games[0];
-    completedGame.status = GameStatus.Completed;
+    completedGame.status = GameStatus.COMPLETED;
 
     games.replace(0, completedGame);
 
