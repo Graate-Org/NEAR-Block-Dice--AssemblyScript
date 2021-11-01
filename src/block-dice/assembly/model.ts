@@ -1,9 +1,9 @@
 import { context, RNG, u128, PersistentMap, PersistentVector } from "near-sdk-as";
 import { AccountID, FEE, GameID, Timestamp, Profile } from "../utils";
 
-export const profiles = new PersistentMap<AccountID, Profile>("profiles");
-export const games = new PersistentVector<Game>("games");
-export const players = new PersistentMap<GameID, Player[]>("players");
+export const profiles = new PersistentMap<AccountID, Profile>("p");
+export const games = new PersistentVector<Game>("g");
+export const players = new PersistentMap<GameID, Player[]>("plys");
 
 
 export enum GameStatus {
@@ -54,10 +54,7 @@ export class Game {
    */
   private generateGameId(): GameID {
     const roll = new RNG<u32>(1, u32.MAX_VALUE);
-    const id = "BD-" + roll.next().toString();
-    if (players.contains(id)) {
-      this.generateGameId();
-    }
+    const id = context.blockTimestamp.toString() + "-" + roll.next().toString();
 
     return id;
   }
