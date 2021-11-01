@@ -175,8 +175,7 @@ export function claimWinnings(gameId: GameID): bool {
       assert(player.claimedWin != ClaimedWin.Claimed, "You have already claimed prize!");
       const prize = u128.div(pool, u128.from(winners.length));
 
-      const transfer_win = ContractPromiseBatch.create(sender);
-      transfer_win.transfer(prize);
+      ContractPromiseBatch.create(sender).transfer(prize);
       player.claimedWin = ClaimedWin.Claimed;
       gamePlayers[index] = player;
 
