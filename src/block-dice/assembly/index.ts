@@ -78,7 +78,6 @@ export function rollDice(gameId: GameID): Array<u32> {
         game.ended = Context.blockTimestamp + 1800000;
         games.replace(index, game);
       }
-
     }
   }
 
@@ -116,9 +115,11 @@ export function getWinners(gameId: GameID): Array<string> {
   verifyGameId(gameId);
   for (let index = 0; index < games.length; index++) {
     if (games[index].id == gameId) {
-      if (games[index].status !== GameStatus.Completed) {
-        if (games[index].status !== GameStatus.Active) {
+      if (games[index].status != GameStatus.Completed) {
+        if (games[index].status == GameStatus.Active) {
           assert(games[index].ended >= Context.blockTimestamp, "Game is active but not ended yet!");
+          games[index].status = GameStatus.Completed;
+          games.replace(index, games[index]);
         } else {
           assert(false, "Game is started but not completed");
         }
@@ -349,6 +350,11 @@ export function getGameType(type: GameStatus): GameReturnData {
   const gameType: Game[] = [];
 
   for (let index = 0; index < games.length; index++) {
+    if (games[index].status == GameStatus.Active && games[index].ended <= Context.blockTimestamp) {
+      games[index].status = GameStatus.Completed;
+      games.replace(index, games[index]);
+    }
+
     if (games[index].status == type) {
       gameType.push(games[index]);
     }
