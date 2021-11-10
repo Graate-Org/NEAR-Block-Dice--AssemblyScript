@@ -29,7 +29,7 @@ function rollDice
 ```ts
 function getWinners
 ```
-- "View" function (ie. a function that does not alters contract state)
+- "Change" function
 - Recieves a game's unique id as parameter
 - Returns an array with the account id of the winners for the game id passed in
 
@@ -46,7 +46,7 @@ function claimWinnings
 ```ts
 function getGameDetails
 ```
-- "View" function (ie. a function that does not alters contract state)
+- "View" function
 - Recieves a game's unique id as parameter
 - Returns details of the game id passed in
 
@@ -54,7 +54,7 @@ function getGameDetails
 ```ts
 function getPlayersDetails
 ```
-- "View" function (ie. a function that does not alters contract state)
+- "View" function
 - Recieves a game's unique id as parameter
 - Returns details of the players for the game id passed in
 
@@ -62,7 +62,7 @@ function getPlayersDetails
 ```ts
 function getProfileDetails
 ```
-- "View" function (ie. a function that does not alters contract state)
+- "View" function
 - Returns details of the profile of the user calling the contract
 
 
@@ -70,18 +70,18 @@ function getProfileDetails
 ```ts
 function getActiveGames
 ```
-- "View" function (ie. a function that does not alters contract state)
+- "Change" function
 - Returns active games
 
 ```ts
 function getCompletedGames
 ```
-- "View" function (ie. a function that does not alters contract state)
+- "Change" function
 - Returns completed games
 
 ```ts
 function getCreatedGames
 ```
-- "View" function (ie. a function that does not alters contract state)
+- "Change" function
 - Returns created games
 

@@ -1,4 +1,4 @@
 # export function getWinners(): GameID
-near view $CONTRACT getWinners '{"gameId": "BD-1114365214"}' --account_id $OWNER
+near call $CONTRACT getWinners '{"gameId": "BD-689191485"}' --account_id $OWNER
 
-exi
+exit 0
