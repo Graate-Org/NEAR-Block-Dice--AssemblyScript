@@ -351,9 +351,11 @@ export function getGameType(type: GameStatus): GameReturnData {
   const gameType: Game[] = [];
 
   for (let index = 0; index < games.length; index++) {
-    if (games[index].status == GameStatus.Active && games[index].ended <= Context.blockTimestamp) {
-      games[index].status = GameStatus.Completed;
-      games.replace(index, games[index]);
+    if (games[index].status == GameStatus.Active) {
+      if (games[index].ended < Context.blockTimestamp) {
+        games[index].status = GameStatus.Completed;
+        games.replace(index, games[index]);
+      }
     }
 
     if (games[index].status == type) {
