@@ -118,7 +118,7 @@ export function getWinners(gameId: GameID): Array<string> {
     if (games[index].id == gameId) {
       if (games[index].status != GameStatus.Completed) {
         if (games[index].status == GameStatus.Active) {
-          assert(games[index].ended >= Context.blockTimestamp, "Game is active but not ended yet!");
+          assert(games[index].ended <= Context.blockTimestamp, "Game is active but not ended yet!");
           games[index].status = GameStatus.Completed;
           games.replace(index, games[index]);
         } else {
@@ -166,7 +166,7 @@ export function claimWinnings(gameId: GameID): bool {
 
   for (let index = 0; index < games.length; index++) {
     if (games[index].id == gameId) {
-      pool = games[index].pool;
+      pool = games[index].prize;
     }
   }
 

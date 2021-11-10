@@ -23,7 +23,6 @@ export class Game {
   createdBy: string;
   createdAt: Timestamp;
   status: GameStatus;
-  pool: u128;
 
   constructor() {
     this.createdBy = context.sender;
