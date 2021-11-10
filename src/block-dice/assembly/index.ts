@@ -73,9 +73,10 @@ export function rollDice(gameId: GameID): Array<u32> {
       assert(game.canRollInGame(), "This game has ended!");
 
       if (game.status == GameStatus.Created) {
+        const time = Context.blockTimestamp;
         game.status = GameStatus.Active;
-        game.started = Context.blockTimestamp;
-        game.ended = Context.blockTimestamp + 1800000;
+        game.started = time;
+        game.ended = time + 1800000000000;
         games.replace(index, game);
       }
     }

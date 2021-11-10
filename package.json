@@ -9,13 +9,13 @@
     "build": "asb --target debug",
     "build:release": "asb",
     "clean": "rm -rf ./build && rm -rf ./neardev",
-    "deploy": "cd scripts && ./deploy.sh"
+    "deploy": "bash ./scripts/deploy.sh"
   },
   "keywords": [],
   "author": "support@graate.org",
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
-    "near-sdk-as": "^3.2.3"
+    "near-sdk-as": "^3.2.0"
   }
 }
