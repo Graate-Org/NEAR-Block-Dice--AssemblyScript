@@ -1,4 +1,4 @@
 # export function rollDIce(): GameID
-near call $CONTRACT rollDice --account_id $PLAYER '{"gameId": "BD-689191485"}'
+near call $CONTRACT rollDice --account_id $OWNER '{"gameId": "BD-2374400498"}'
 
 exit 0
